@@ -1,0 +1,68 @@
+{
+    "identityPoolName": "duc6cd085cc_identitypool_6cd085cc",
+    "allowUnauthenticatedIdentities": false,
+    "lambdaLogPolicy": "duc6cd_6cd085cc_lambda_log_policy",
+    "openIdLambdaRoleName": "duc6cd_6cd085cc_openid_lambda_role",
+    "openIdRolePolicy": "duc6cd_6cd085cc_openid_pass_role_policy",
+    "openIdLambdaIAMPolicy": "duc6cd_6cd085cc_openid_lambda_iam_policy",
+    "openIdLogPolicy": "duc6cd_6cd085cc_openid_lambda_log_policy",
+    "userPoolName": "duc6cd085cc_userpool_6cd085cc",
+    "autoVerifiedAttributes": [
+        "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+        "SMS Text Message"
+    ],
+    "roleName": "duc6cd6cd085cc_sns-role",
+    "roleExternalId": "duc6cd6cd085cc_role_external_id",
+    "policyName": "duc6cd6cd085cc-sns-policy",
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+        "email"
+    ],
+    "userpoolClientName": "duc6cd6cd085cc_app_client",
+    "userpoolClientGenerateSecret": true,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+        "email"
+    ],
+    "userpoolClientReadAttributes": [
+        "email"
+    ],
+    "mfaLambdaRole": "duc6cd6cd085cc_totp_lambda_role",
+    "mfaLambdaLogPolicy": "duc6cd6cd085cc_totp_lambda_log_policy",
+    "mfaPassRolePolicy": "duc6cd6cd085cc_totp_pass_role_policy",
+    "mfaLambdaIAMPolicy": "duc6cd6cd085cc_totp_lambda_iam_policy",
+    "userpoolClientLambdaRole": "duc6cd6cd085cc_userpoolclient_lambda_role",
+    "userpoolClientLogPolicy": "duc6cd6cd085cc_userpoolclient_lambda_log_policy",
+    "userpoolClientLambdaPolicy": "duc6cd6cd085cc_userpoolclient_lambda_iam_policy",
+    "userpoolClientSetAttributes": false,
+    "resourceName": "duc6cd085cc",
+    "authSelections": "identityPoolAndUserPool",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    },
+    "useDefault": "default"
+}
