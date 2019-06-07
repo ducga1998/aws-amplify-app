@@ -1,0 +1,18 @@
+
+type Coin @model {
+  id: ID!
+  clientId: ID
+  name: String!
+  symbol: String!
+  price: Float!
+}
+
+mutation createCoin {
+  createCoin(input: {
+    name: "Bitcoin"
+    symbol: "BTC"
+    price: 9000
+  }) {
+    id name symbol price
+  }
+}
