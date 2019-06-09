@@ -1,5 +1,5 @@
 {
-    "projectName": "duc",
+    "projectName": "aws",
     "version": "2.0",
     "frontend": "javascript",
     "javascript": {
@@ -7,7 +7,7 @@
         "config": {
             "SourceDir": "src",
             "DistributionDir": "build",
-            "BuildCommand": "yarn build",
+            "BuildCommand": "npm run-script build",
             "StartCommand": "npm run-script start"
         }
     },

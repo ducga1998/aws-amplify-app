@@ -1,0 +1,13 @@
+type Todo @model {
+  id: ID!
+  name: String!
+  description: String
+}
+type Talk @model {
+  id: ID!
+  clientId: ID
+  name: String!
+  description: String!
+  speakerName: String!
+  speakerBio: String!
+}

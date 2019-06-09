@@ -1,12 +1,12 @@
 {
 	"auth": {
-		"duc6cd085cc": {
+		"awsff25fd1c": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation"
 		}
 	},
 	"api": {
-		"duc": {
+		"aws": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {

@@ -1,69 +1,42 @@
-import React, { useEffect, useReducer } from 'react'
-import { Auth } from 'aws-amplify'
-// initial state
+// src/App.js
 
+// imports from Amplify library
+import { API, graphqlOperation } from 'aws-amplify'
 
-// define initial state
-
-// useReducer hook creates local state
-
-
-// Class method to sign up a user
-
-
-
-function App() {
-  const initialState = {
-    username: '', password: '', email: ''
+// import query definition
+import { listTalks as ListTalks } from './graphql/queries'
+import * as React from 'react'
+// define some state to hold the data returned from the API
+export default class App extends React.Component {
+  state = {
+    talks: []
   }
-  const [state, dispatch] = useReducer(reducer, initialState)
-  async function signUp() {
-    const { username, password, email } = state
+
+  // execute the query in componentDidMount
+  async componentDidMount() {
     try {
-      await Auth.signUp({ username, password, attributes: { email } })
-      console.log('user successfully signed up!')
+      const talkData = await API.graphql(graphqlOperation(ListTalks))
+      console.log('talkData:', talkData)
+      this.setState({
+        talks: talkData.data.listTalks.items
+      })
     } catch (err) {
-      console.log('error signing up user...', err)
+      console.log('error fetching talks...', err)
     }
   }
 
-
-  // create reducer
-  function reducer(state, action) {
-    switch (action.type) {
-      case 'SET_INPUT':
-        return { ...state, [action.inputName]: action.inputValue }
-      default:
-        return state
-    }
+  // add UI in render method to show data
+  render() {
+    return <>
+      {
+        this.state.talks.map((talk, index) => (
+          <div key={index}>
+            <h3>{talk.speakerName}</h3>
+            <h5>{talk.name}</h5>
+            <p>{talk.description}</p>
+          </div>
+        ))
+      }
+    </>
   }
-
-  // event handler
-  function onChange(e) {
-    dispatch({
-      type: 'SET_INPUT',
-      inputName: e.target.name,
-      inputValue: e.target.value
-    })
-  }
-
-  useEffect(() => {
-    Auth.currentAuthenticatedUser()
-      .then(user => console.log({ user }))
-      .catch(error => console.log({ error }))
-  })
-  return (
-    <div className="App">
-      <button onClick={signUp}>Sign Up</button>
-
-      <input
-        name='username'
-        placeholder='username'
-        value={state.username}
-        onChange={onChange}
-      />
-    </div>
-  )
 }
-
-export default App
